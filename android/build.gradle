@@ -1,18 +1,32 @@
-allprojects {
+// Configuración de los repositorios
+buildscript {
     repositories {
-        google()
-        mavenCentral()
+        google()      // Repositorio de Google
+        mavenCentral() // Repositorio Maven Central
+    }
+    dependencies {
+        // Plugin de Gradle para Android (asegúrate de tener una versión compatible)
+        classpath 'com.android.tools.build:gradle:8.2.2'  // Asegúrate de que sea una versión compatible
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0' // Versión de Kotlin
     }
 }
 
-rootProject.buildDir = "../build"
+allprojects {
+    repositories {
+        google()      // Repositorio de Google
+        mavenCentral() // Repositorio Maven Central
+    }
+}
+
+rootProject.buildDir = "../build"  // Carpeta de salida de la compilación
+
+// Configuración de los subproyectos
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
     project.evaluationDependsOn(":app")
 }
 
+// Tarea para limpiar el proyecto
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }

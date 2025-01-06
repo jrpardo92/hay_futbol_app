@@ -13,14 +13,24 @@ class HomeView extends GetView<HomeController> {
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () => Get.offAllNamed('/auth'),
+            onPressed: controller.signOut,
           ),
         ],
       ),
-      body: const Center(
-        child: Text(
-          'Bienvenido a la App de Fútbol',
-          style: TextStyle(fontSize: 20),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Obx(() => Text(
+              'Bienvenido ${controller.userName}',
+              style: const TextStyle(fontSize: 20),
+            )),
+            const SizedBox(height: 20),
+            const Text(
+              'Esta es la pantalla principal',
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
         ),
       ),
     );

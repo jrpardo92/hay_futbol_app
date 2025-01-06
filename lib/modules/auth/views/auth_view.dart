@@ -21,10 +21,17 @@ class AuthView extends GetView<AuthController> {
             ),
             const SizedBox(height: 30),
             ElevatedButton(
-              onPressed: () => Get.offAllNamed('/home'),
-              child: const Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Text('Ingresar como Invitado'),
+              onPressed: controller.signInWithGoogle,
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Icon(Icons.login),
+                    SizedBox(width: 10),
+                    Text('Ingresar con Google'),
+                  ],
+                ),
               ),
             ),
           ],

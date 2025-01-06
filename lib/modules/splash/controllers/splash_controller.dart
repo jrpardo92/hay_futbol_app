@@ -1,7 +1,10 @@
 import 'dart:io';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SplashController extends GetxController {
+  final _googleSignIn = GoogleSignIn();
+  
   final isLoading = true.obs;
   final hasError = false.obs;
   final errorMessage = ''.obs;
@@ -32,12 +35,17 @@ class SplashController extends GetxController {
         throw 'No hay conexión a internet';
       }
 
-      // Simulamos una pequeña carga
+      // Verificar sesión de Google
+      final isSignedIn = await _googleSignIn.isSignedIn();
+      
+      // Delay para mostrar el splash
       await Future.delayed(const Duration(seconds: 2));
-      
-      // Por ahora, siempre vamos al auth
-      Get.offAllNamed('/auth');
-      
+
+      if (isSignedIn) {
+        Get.offAllNamed('/home');
+      } else {
+        Get.offAllNamed('/auth');
+      }
     } catch (e) {
       hasError.value = true;
       errorMessage.value = e.toString();
