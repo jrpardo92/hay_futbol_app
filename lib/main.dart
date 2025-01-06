@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
-
-// Importaciones de rutas (las crearemos después)
-import 'app/routes/app_pages.dart';
-import 'app/routes/app_routes.dart';
+import 'routes/app_pages.dart';
+import 'routes/app_routes.dart';
 
 
 void main() async {
@@ -28,7 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'Fútbol App',
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.fade,
-      initialBinding: InitialBinding(), // Lo crearemos después
+      //initialBinding: InitialBinding(), // Lo crearemos después
       theme: ThemeData(
         primarySwatch: Colors.green,
         useMaterial3: true,
