@@ -18,7 +18,7 @@ class SplashView extends GetView<SplashController> {
             children: [
               // Logo de la app
               Image.asset(
-                'assets/images/logo.png', // Asegúrate de tener esta imagen
+                'assets/logos/logo.png', // Asegúrate de tener esta imagen
                 width: 150,
                 height: 150,
               ),
